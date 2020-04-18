@@ -3,12 +3,19 @@ from flaskApp import app,db,bcrypt
 from flaskApp.forms import RegistrationForm,LoginForm,UpdateAccountForm
 from flaskApp.models import User,Lesson
 from flask_login import login_user,current_user,logout_user,login_required
+import pandas as pd
 
 
 @app.route('/')
 @app.route('/home')
 def home():
     return render_template('home.html')
+
+@app.route('/schedule')
+def schedule():
+    title = "Schedule"
+    return render_template('schedule.html', title=title)
+
 
 @app.route('/register', methods=['GET','POST'])
 def register():
