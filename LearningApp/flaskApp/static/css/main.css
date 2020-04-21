@@ -12,6 +12,13 @@ h1, h2, h3, h4, h5, h6 {
   background-color: #000000;
 }
 
+.table1 {
+  width: 80%;
+  margin-top: 100px;
+  border: 2px solid black;
+
+}
+
 .site-header .navbar-nav .nav-link {
   color: #cbd5db;
 }

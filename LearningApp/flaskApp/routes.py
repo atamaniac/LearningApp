@@ -4,6 +4,7 @@ from flaskApp.forms import RegistrationForm,LoginForm,UpdateAccountForm
 from flaskApp.models import User,Lesson
 from flask_login import login_user,current_user,logout_user,login_required
 import pandas as pd
+import random
 
 
 @app.route('/')
@@ -14,7 +15,17 @@ def home():
 @app.route('/schedule')
 def schedule():
     title = "Schedule"
-    return render_template('schedule.html', title=title)
+    days = ['Pon', "Wt", "Śr", "Czw", "Pt"]
+    hours = ['8:00', '10:00', '12:00', "14:00", "16:00", "18:00"]
+    professors = {
+        "Dr. Jan Kowalski": "8:00",
+        "Dr. Monika Nowak": "10:00",
+        "Prof. Tomasz Lewandowski": "12:00",
+        "Mgr. Ewa Zając": "14:00",
+        "Dr. Janusz Zawada": "16:00"
+    }
+    a = random.sample(list(professors), 1)[0]
+    return render_template('schedule.html', title=title, days=days, professors=a, hours=hours)
 
 
 @app.route('/register', methods=['GET','POST'])
