@@ -1,2 +1,21 @@
 {% extends "layout.html" %}
-
+{% block content %}
+    <head>
+        <link rel="stylesheet" type="text/css" href="static/css/main.css">
+    </head>
+    <body>
+        <table class="table1">
+            <th>Godzina</th>
+            {% for day in days %}
+                <th>{{ day }}</th>
+            {% endfor %}
+               {% for hour in hours %}
+                    <tr>
+                        <td>{{ hour }}</td>
+                        {% for i in range(5) %}<td>{{ professors }}</td>
+                        {% endfor %}
+                    </tr>
+                {% endfor %}
+        </table>
+    </body>
+{% endblock %}
