@@ -1,5 +1,13 @@
 {% extends "layout.html" %}
 {% block content %}
+    <style>
+      body {
+          background-image: url("static/img/clouds.jpg");
+          background-repeat: no-repeat;
+          background-attachment: fixed;
+          background-size: cover;
+        }
+    </style>
   <div class="content-section">
     <form action="" method="post">
       {{ form.hidden_tag() }}
