@@ -3,30 +3,12 @@ from flaskApp import app,db,bcrypt
 from flaskApp.forms import RegistrationForm,LoginForm,UpdateAccountForm
 from flaskApp.models import User,Lesson
 from flask_login import login_user,current_user,logout_user,login_required
-import pandas as pd
-import random
 
 
 @app.route('/')
 @app.route('/home')
 def home():
     return render_template('home.html')
-
-@app.route('/schedule')
-def schedule():
-    title = "Schedule"
-    days = ['Pon', "Wt", "Śr", "Czw", "Pt"]
-    hours = ['8:00', '10:00', '12:00', "14:00", "16:00", "18:00"]
-    professors = {
-        "Dr. Jan Kowalski": "8:00",
-        "Dr. Monika Nowak": "10:00",
-        "Prof. Tomasz Lewandowski": "12:00",
-        "Mgr. Ewa Zając": "14:00",
-        "Dr. Janusz Zawada": "16:00"
-    }
-    a = random.sample(list(professors), 1)[0]
-    return render_template('schedule.html', title=title, days=days, professors=a, hours=hours)
-
 
 @app.route('/register', methods=['GET','POST'])
 def register():
@@ -78,3 +60,13 @@ def account():
         form.email.data = current_user.email
     image_file = url_for('static',filename='profile_pics/' + current_user.image_file)
     return render_template('account.html', title='Account', image_file=image_file,form=form)
+
+@app.route('/timetable')
+@login_required
+def timetable():
+    return render_template('timetable.html')
+
+@app.route('/booking')
+@login_required
+def booking():
+    return render_template('booking.html')
