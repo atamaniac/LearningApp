@@ -2,6 +2,16 @@
 {% block content %}
     <head>
         <link rel="stylesheet" type="text/css" href="static/css/main.css">
+        <script src="static/js/main.js"></script>
+
+         <style>
+          body {
+              background-image: url("static/img/notebook.jpg");
+              background-repeat: no-repeat;
+              background-attachment: fixed;
+              background-size: cover;
+          }
+        </style>
     </head>
     <body>
         <table class="table1">
@@ -12,7 +22,7 @@
                {% for hour in hours %}
                     <tr>
                         <td>{{ hour }}</td>
-                        {% for i in range(5) %}<td>{{ professors }}</td>
+                        {% for i in range(5) %}<td onclick="alert('Zapisałeś się na dyżur')">{{ professors }}</td>
                         {% endfor %}
                     </tr>
                 {% endfor %}
